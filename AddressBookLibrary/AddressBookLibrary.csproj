@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Connector.cs" />
+    <Compile Include="DataAccess\Context.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Person.cs" />

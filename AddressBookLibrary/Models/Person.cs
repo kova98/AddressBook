@@ -9,7 +9,7 @@ namespace AddressBookLibrary.Models
     /// <summary>
     /// Contains full information of a person in the address book.
     /// </summary>
-    class Person
+    public class Person
     {
         /// <summary>
         /// The ID of the person. Used as the primary key.

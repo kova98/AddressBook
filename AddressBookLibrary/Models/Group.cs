@@ -9,7 +9,7 @@ namespace AddressBookLibrary.Models
     /// <summary>
     /// Contains a list of people whose names start with a certain letter.
     /// </summary>
-    class Group
+    public class Group
     {
         /// <summary>
         /// The letter of the alphabet which this group represents.

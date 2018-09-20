@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
 
 namespace AddressBookLibrary.Models
 {
     /// <summary>
     /// Contains full address information. 
     /// </summary>
-    class Address
+    public class Address
     {
         /// <summary>
         /// The ID of the address. Used as the primary key.
