@@ -1,12 +1,18 @@
 ﻿<Window x:Class="AddressBookUI.Views.ShellView"
+        x:Name="mainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AddressBookUI.Views"
+        xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        xmlns:local1="clr-namespace:AddressBookUI.ViewModels"
         mc:Ignorable="d"
         Title="ShellView" Height="800" Width="800" 
         Foreground="#2196F3" FontFamily="Segoe UI Light" FontSize="30">
+    <Window.Resources>
+        <local1:ShellViewModel x:Key="ShellViewModel"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -20,46 +26,57 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid.Resources>
+            <CollectionViewSource x:Key="People" Source="{Binding People}">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="FirstChar" />
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+        </Grid.Resources>
+        
         <!-- Column 1 -->
 
-        <DockPanel Grid.Column="1" Grid.Row="1" >
+        <DockPanel Grid.Column="1"  Grid.Row="1">
             <TextBlock Text="Address Book" FontSize="40"
                        Margin="0 0 0 10" DockPanel.Dock="Left"/>
             <Button DockPanel.Dock="Right" HorizontalAlignment="Right"
-                    Margin="10 0" Height="50" Background="White"
+                    Margin="10 0" Height="50" Background="Transparent"
                     BorderThickness="0">
                 <Image Source="/images/add.png" />
             </Button>
         </DockPanel>
 
-        <ItemsControl Grid.Column="1" Grid.Row="2"
-                      x:Name="MyListView" ItemsSource="{Binding Groups}" >
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Letter}" FontSize="30"/>
+        <ListView Grid.Column="1" Grid.Row="2" 
+                  ItemsSource="{Binding Source={StaticResource People}}" BorderThickness="0"
+                  SelectedItem="{Binding SelectedPerson, Mode=OneWayToSource}" >
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Items.Item[0].FirstChar}"
+                                       FontSize="30" Foreground="#2196F3"/> 
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
 
-                        <ListView ItemsSource="{Binding People}" BorderThickness="0"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Ellipse Height="50" Width="50" Margin="0 5 10 5">
-                                            <Ellipse.Fill>
-                                                <ImageBrush ImageSource="/images/anselmo.png"/>
-                                            </Ellipse.Fill>
-                                        </Ellipse>
-                                        <TextBlock Text="{Binding FullName}"
-                                                   VerticalAlignment="Center"
-                                                   Foreground="#212121"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="50" Width="50" Margin="0 5 10 5">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/images/anselmo.png"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Text="{Binding FullName}"
+                                   VerticalAlignment="Center"
+                                   Foreground="#212121"/>
                     </StackPanel>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        
 
         <!-- Column 2-->
 
@@ -86,13 +103,14 @@
                 </StackPanel.Resources>
 
                 <!-- Profile picture and name-->
+
                 <Ellipse Width="150" Height="150" Margin="0 20 0 0" 
                      Stroke="White" StrokeThickness="1.5">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="/images/anselmo.png" Stretch="UniformToFill"/>
                     </Ellipse.Fill>
                 </Ellipse>
-                <TextBlock Text="Ivan Ivanović" FontSize="45" TextWrapping="Wrap" TextAlignment="Center"       
+                <TextBlock Text="{Binding SelectedPerson.FullName, Mode=OneWay}" FontSize="45" TextWrapping="Wrap" TextAlignment="Center"       
                            HorizontalAlignment="Center" Width="Auto" Margin="0 0 0 20"
                            Style="{StaticResource Text}" />
 
@@ -100,24 +118,30 @@
 
                 <TextBlock Text="Phone Number" Style="{StaticResource PrimaryText}"/>
                 <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="+385 98 666 1991" Style="{StaticResource SecondayText}"/>
+                <TextBlock Text="{Binding SelectedPerson.PhoneNumber}" Style="{StaticResource SecondayText}"/>
 
                 <TextBlock Text="Email" Style="{StaticResource PrimaryText}"/>
                 <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="ivanivanovic@gmail.com" Style="{StaticResource SecondayText}"/>
+                <TextBlock Text="{Binding SelectedPerson.Email}" Style="{StaticResource SecondayText}"/>
 
                 <TextBlock Text="Date Of Birth" Style="{StaticResource PrimaryText}"/>
                 <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="24.11.1990." Style="{StaticResource SecondayText}"/>
+                <TextBlock Text="{Binding SelectedPerson.DateOfBirth}" Style="{StaticResource SecondayText}"/>
 
                 <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
                 <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="Žrtava fašizma 5" Style="{StaticResource SecondayText}" Margin="0 10 0 0"/>
-                <TextBlock Text="10000" Style="{StaticResource SecondayText}" Margin="0"/>
-                <TextBlock Text="Zagreb" Style="{StaticResource SecondayText}" Margin="0"/>
-                <TextBlock Text="Croatia" Style="{StaticResource SecondayText}" Margin="0"/>
-                
+                <TextBlock Text="{Binding SelectedPerson.Address.StreetNameAndNumber}" Style="{StaticResource SecondayText}" Margin="0 10 0 0"/>
+                <TextBlock Text="{Binding SelectedPerson.Address.PostCode}" Style="{StaticResource SecondayText}" Margin="0"/>
+                <TextBlock Text="{Binding SelectedPerson.Address.City}" Style="{StaticResource SecondayText}" Margin="0"/>
+                <TextBlock Text="{Binding SelectedPerson.Address.Country}" Style="{StaticResource SecondayText}" Margin="0"/>
+
             </StackPanel>
         </ScrollViewer>
+
+        <Button Grid.Column="2" Grid.Row="1"
+            Margin="10 0" Height="40" Background="Transparent" BorderThickness="0"
+            HorizontalAlignment="Right">
+            <Image Source="/images/edit.png" />
+        </Button>
     </Grid>
 </Window>

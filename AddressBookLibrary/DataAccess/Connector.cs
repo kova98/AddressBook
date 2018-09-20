@@ -8,13 +8,27 @@ using AddressBookLibrary.Models;
 
 namespace AddressBookLibrary.DataAccess
 {
-    class Connector
+    public class Connector
     {
+        /// <summary>
+        /// Returns a list of all the People in the database.
+        /// </summary>
+        public static List<Person> People
+        {
+            get
+            {
+                using (var db = new Context())
+                {
+                    return db.People.Include(x => x.Address).ToList();
+                }
+            }
+        }
+
         /// <summary>
         /// Adds a new Person to the database.
         /// </summary>
         /// <param name="person">The person to add.</param>
-        public void CreatePerson(Person person)
+        public static void CreatePerson(Person person)
         {
             using (var db = new Context())
             {
@@ -30,7 +44,7 @@ namespace AddressBookLibrary.DataAccess
         /// Deletes a person from the database.
         /// </summary>
         /// <param name="person">The person to delete.</param>
-        public void DeletePerson(Person person)
+        public static void DeletePerson(Person person)
         {
             using (var db = new Context())
             {
@@ -53,7 +67,7 @@ namespace AddressBookLibrary.DataAccess
         /// </summary>
         /// <param name="person">The person to edit.</param>
         /// <returns></returns>
-        public bool TryEditPerson(Person person)
+        public static bool TryEditPerson(Person person)
         {
             using (var db = new Context())
             {

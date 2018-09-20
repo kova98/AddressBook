@@ -27,6 +27,14 @@ namespace AddressBookLibrary.Models
         public string StreetNumber { get; set; }
 
         /// <summary>
+        /// Returns the street name and number in a single string.
+        /// </summary>
+        public string StreetNameAndNumber
+        {
+            get { return $"{StreetName} {StreetNumber}"; }
+        }
+
+        /// <summary>
         /// The city.
         /// </summary>
         public string City { get; set; }

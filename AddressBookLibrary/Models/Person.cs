@@ -27,6 +27,14 @@ namespace AddressBookLibrary.Models
         public string LastName { get; set; }
 
         /// <summary>
+        /// The person's full name.
+        /// </summary>
+        public string FullName
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
+
+        /// <summary>
         /// The person's phone number.
         /// </summary>
         public string PhoneNumber { get; set; }
@@ -39,11 +47,25 @@ namespace AddressBookLibrary.Models
         /// <summary>
         /// The person's date of birth.
         /// </summary>
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
         /// <summary>
         /// The person's address.
         /// </summary>
         public Address Address { get; set; }
+
+        /// <summary>
+        /// The person's profile photo name.
+        /// </summary>
+        public string ProfilePhoto { get; set; }
+
+        /// <summary>
+        /// The first character of the person's name.
+        /// Used for sorting.
+        /// </summary>
+        public char FirstChar
+        {
+            get { return FirstName.ToUpper()[0]; }
+        }
     }
 }
