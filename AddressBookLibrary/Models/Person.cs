@@ -32,6 +32,16 @@ namespace AddressBookLibrary.Models
         public string PhoneNumber { get; set; }
 
         /// <summary>
+        /// The person's email.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// The person's date of birth.
+        /// </summary>
+        public DateTime DateOfBirth { get; set; }
+
+        /// <summary>
         /// The person's address.
         /// </summary>
         public Address Address { get; set; }

@@ -5,8 +5,119 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AddressBookUI.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
+        Title="ShellView" Height="800" Width="800" 
+        Foreground="#2196F3" FontFamily="Segoe UI Light" FontSize="30">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Column 1 -->
+
+        <DockPanel Grid.Column="1" Grid.Row="1" >
+            <TextBlock Text="Address Book" FontSize="40"
+                       Margin="0 0 0 10" DockPanel.Dock="Left"/>
+            <Button DockPanel.Dock="Right" HorizontalAlignment="Right"
+                    Margin="10 0" Height="50" Background="White"
+                    BorderThickness="0">
+                <Image Source="/images/add.png" />
+            </Button>
+        </DockPanel>
+
+        <ItemsControl Grid.Column="1" Grid.Row="2"
+                      x:Name="MyListView" ItemsSource="{Binding Groups}" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Letter}" FontSize="30"/>
+
+                        <ListView ItemsSource="{Binding People}" BorderThickness="0"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Ellipse Height="50" Width="50" Margin="0 5 10 5">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="/images/anselmo.png"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock Text="{Binding FullName}"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#212121"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Column 2-->
+
+        <Frame Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="2"
+               Background="#2196F3"/>
+
+        <ScrollViewer Grid.Column="2" Grid.RowSpan="3" Margin="15 0 10 0"
+                      VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style x:Key="Text" TargetType="TextBlock">
+                        <Setter Property="Background" Value="#2196F3" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Margin" Value="0 10 0 0" />
+                    </Style>
+                    <Style x:Key="PrimaryText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontSize" Value="34" />
+                    </Style>
+                    <Style x:Key="SecondayText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="#BBDEFB" />
+                        <Setter Property="FontSize" Value="26" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <!-- Profile picture and name-->
+                <Ellipse Width="150" Height="150" Margin="0 20 0 0" 
+                     Stroke="White" StrokeThickness="1.5">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/images/anselmo.png" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="Ivan Ivanović" FontSize="45" TextWrapping="Wrap" TextAlignment="Center"       
+                           HorizontalAlignment="Center" Width="Auto" Margin="0 0 0 20"
+                           Style="{StaticResource Text}" />
+
+                <!-- Information -->
+
+                <TextBlock Text="Phone Number" Style="{StaticResource PrimaryText}"/>
+                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                <TextBlock Text="+385 98 666 1991" Style="{StaticResource SecondayText}"/>
+
+                <TextBlock Text="Email" Style="{StaticResource PrimaryText}"/>
+                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                <TextBlock Text="ivanivanovic@gmail.com" Style="{StaticResource SecondayText}"/>
+
+                <TextBlock Text="Date Of Birth" Style="{StaticResource PrimaryText}"/>
+                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                <TextBlock Text="24.11.1990." Style="{StaticResource SecondayText}"/>
+
+                <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
+                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                <TextBlock Text="Žrtava fašizma 5" Style="{StaticResource SecondayText}" Margin="0 10 0 0"/>
+                <TextBlock Text="10000" Style="{StaticResource SecondayText}" Margin="0"/>
+                <TextBlock Text="Zagreb" Style="{StaticResource SecondayText}" Margin="0"/>
+                <TextBlock Text="Croatia" Style="{StaticResource SecondayText}" Margin="0"/>
+                
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
