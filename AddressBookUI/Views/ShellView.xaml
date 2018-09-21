@@ -46,7 +46,7 @@
             </Button>
         </DockPanel>
 
-        <ListView Grid.Column="1" Grid.Row="2" 
+        <ListView Grid.Column="1" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Hidden"
                   ItemsSource="{Binding Source={StaticResource People}}" BorderThickness="0"
                   SelectedItem="{Binding SelectedPerson, Mode=OneWayToSource}" >
             <ListView.GroupStyle>
@@ -131,7 +131,7 @@
                 <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
                 <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
                 <TextBlock Text="{Binding SelectedPerson.Address.StreetNameAndNumber}" Style="{StaticResource SecondayText}" Margin="0 10 0 0"/>
-                <TextBlock Text="{Binding SelectedPerson.Address.PostCode}" Style="{StaticResource SecondayText}" Margin="0"/>
+                <TextBlock Text="{Binding SelectedPerson.Address.ZipCode}" Style="{StaticResource SecondayText}" Margin="0"/>
                 <TextBlock Text="{Binding SelectedPerson.Address.City}" Style="{StaticResource SecondayText}" Margin="0"/>
                 <TextBlock Text="{Binding SelectedPerson.Address.Country}" Style="{StaticResource SecondayText}" Margin="0"/>
 
