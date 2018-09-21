@@ -9,7 +9,7 @@ using AddressBookLibrary.Models;
 
 namespace AddressBookUI.ViewModels
 {
-    public class ShellViewModel : Screen
+    public class ShellViewModel : Conductor<object>
     {
         private Person _selectedPerson;
         private List<Person> _people;
@@ -36,6 +36,7 @@ namespace AddressBookUI.ViewModels
             {
                 _selectedPerson = value;
                 NotifyOfPropertyChange(() => SelectedPerson);
+                ActivateItem(new DisplayPersonViewModel(SelectedPerson));
             }
         }
     }
