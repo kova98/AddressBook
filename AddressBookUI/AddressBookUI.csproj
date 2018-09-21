@@ -78,8 +78,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IShell.cs" />
+    <Compile Include="ViewModels\CreatePersonViewModel.cs" />
     <Compile Include="ViewModels\DisplayPersonViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\CreatePersonView.xaml.cs">
+      <DependentUpon>CreatePersonView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DisplayPersonView.xaml.cs">
       <DependentUpon>DisplayPersonView.xaml</DependentUpon>
     </Compile>
@@ -125,6 +130,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\CreatePersonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DisplayPersonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +148,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\anselmo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\save2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\edit.png" />

@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="AddressBookUI.Views.CreatePersonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AddressBookUI.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="1200" d:DesignWidth="350"
+             Foreground="#2196F3" FontFamily="Segoe UI Light" FontSize="30" Background="#2196F3">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.RowSpan="2"  Margin="15 0 10 0"
+                      VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style x:Key="Text" TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Margin" Value="0 10 0 0" />
+                    </Style>
+                    <Style x:Key="PrimaryText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontSize" Value="34" />
+                    </Style>
+                    <Style x:Key="SecondaryText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="#BBDEFB" />
+                        <Setter Property="FontSize" Value="26" />
+                        <Setter Property="Margin" Value="0" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <!-- Upload Button-->
+                <Button x:Name="Upload"
+                        Margin="0 20" Width="150" Height="150">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse Width="150" Height="150"
+                                         Fill="White" >
+                                </Ellipse>
+                                <Image Height="100" Width="100"
+                                       Source="/images/upload.png" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
+                    </Button.Effect>
+                </Button>
+
+                <!-- Input Fields -->
+                
+                <TextBlock Text="First Name" Style="{StaticResource PrimaryText}"/>
+                <TextBox x:Name="FirstName" />
+
+                <TextBlock Text="Last Name" Style="{StaticResource PrimaryText}"/>
+                <TextBox x:Name="LastName" />
+
+                <TextBlock Text="Phone Number" Style="{StaticResource PrimaryText}"/>
+                <TextBox x:Name="PhoneNumber" />
+                
+                <TextBlock Text="Email" Style="{StaticResource PrimaryText}"/>
+                <TextBox x:Name="Email" />
+
+                <TextBlock Text="Date Of Birth" Style="{StaticResource PrimaryText}"/>
+                <DatePicker x:Name="DateOfBirth" Background="White"/>
+
+                <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
+                <StackPanel Margin="10 0 0 0">
+                    <TextBlock Text="Street Name" Style="{StaticResource SecondaryText}"/>
+                    <TextBox x:Name="StreetName"/>
+                    
+                    <TextBlock Text="Street Number" Style="{StaticResource SecondaryText}"/>
+                    <TextBox x:Name="StreetNumber"/>
+
+                    <TextBlock Text="City" Style="{StaticResource SecondaryText}"/>
+                    <TextBox x:Name="City"/>
+
+                    <TextBlock Text="State" Style="{StaticResource SecondaryText}"/>
+                    <TextBox x:Name="State"/>
+
+                    <TextBlock Text="Country" Style="{StaticResource SecondaryText}"/>
+                    <TextBox x:Name="Country"/>
+
+                    <TextBlock Text="Zip Code" Style="{StaticResource SecondaryText}"/>
+                    <TextBox x:Name="ZipCode" Margin="0 0 0 20"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Save Button -->
+        
+        <Button x:Name="Save"
+                Margin="10" Height="40" Background="Transparent" BorderThickness="0"
+                HorizontalAlignment="Right">
+            <Image Source="/images/save2.png" />
+
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="5" Color="Gray" ShadowDepth="0"/>
+            </Button.Effect>
+        </Button>
+    </Grid>
+</UserControl>

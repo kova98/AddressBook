@@ -9,7 +9,7 @@ using AddressBookLibrary.Models;
 
 namespace AddressBookUI.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
+    public class ShellViewModel : Conductor<object>, IShell
     {
         private Person _selectedPerson;
         private List<Person> _people;
@@ -36,8 +36,24 @@ namespace AddressBookUI.ViewModels
             {
                 _selectedPerson = value;
                 NotifyOfPropertyChange(() => SelectedPerson);
-                ActivateItem(new DisplayPersonViewModel(SelectedPerson));
+                ShowDisplayPerson();
             }
+        }
+
+        public void ShowDisplayPerson()
+        {
+            ActivateItem(new DisplayPersonViewModel(SelectedPerson));
+        }
+
+        public void ShowCreatePerson()
+        {
+            ActivateItem(new CreatePersonViewModel(this));
+        }
+
+        public void CreatePerson(Person person)
+        {
+            Connector.CreatePerson(person);
+            NotifyOfPropertyChange(() => People);
         }
     }
 }
