@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\Connector.cs" />
     <Compile Include="DataAccess\Context.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

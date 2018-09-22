@@ -83,7 +83,7 @@ namespace AddressBookLibrary.DataAccess
                     personToEdit.ProfilePhoto = person.ProfilePhoto;
 
                     // Perhaps change this to use a name.
-                    personToEdit.Address = db.Addresses.FirstOrDefault(x => x.ID == person.Address.ID);
+                    personToEdit.Address = person.Address;
 
                     db.Entry(personToEdit.Address).State = EntityState.Modified;
                     db.SaveChanges();
