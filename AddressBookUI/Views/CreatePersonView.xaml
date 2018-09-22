@@ -63,39 +63,39 @@
                     </TextBlock>
                 </StackPanel>
 
-                <TextBox x:Name="FirstName" />
+                <TextBox Text="{Binding PersonToCreate.FirstName}" />
 
                 <TextBlock Text="Last Name" Style="{StaticResource PrimaryText}"/>
-                <TextBox x:Name="LastName" />
+                <TextBox Text="{Binding PersonToCreate.LastName}" />
 
                 <TextBlock Text="Phone Number" Style="{StaticResource PrimaryText}"/>
-                <TextBox x:Name="PhoneNumber" />
+                <TextBox Text="{Binding PersonToCreate.PhoneNumber}" />
                 
                 <TextBlock Text="Email" Style="{StaticResource PrimaryText}"/>
-                <TextBox x:Name="Email" />
+                <TextBox Text="{Binding PersonToCreate.Email}" />
 
                 <TextBlock Text="Date Of Birth" Style="{StaticResource PrimaryText}"/>
-                <DatePicker x:Name="DateOfBirth" Background="White"/>
+                <DatePicker x:Name="PersonToCreate_DateOfBirth" Background="White"/>
 
                 <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
                 <StackPanel Margin="10 0 0 0">
                     <TextBlock Text="Street Name" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="StreetName"/>
+                    <TextBox Text="{Binding PersonToCreate.Address.StreetName}" />
                     
                     <TextBlock Text="Street Number" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="StreetNumber"/>
+                    <TextBox Text="{Binding PersonToCreate.Address.StreetNumber}" />
 
                     <TextBlock Text="City" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="City"/>
+                    <TextBox Text="{Binding PersonToCreate.Address.City}" />
 
                     <TextBlock Text="State" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="State"/>
+                    <TextBox Text="{Binding PersonToCreate.Address.State}" />
 
                     <TextBlock Text="Country" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="Country"/>
+                    <TextBox Text="{Binding PersonToCreate.Address.Country}" />
 
                     <TextBlock Text="Zip Code" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="ZipCode" Margin="0 0 0 20"/>
+                    <TextBox Text="{Binding PersonToCreate.Address.ZipCode}" Margin="0 0 0 20" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

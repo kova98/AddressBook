@@ -17,62 +17,22 @@ namespace AddressBookUI.ViewModels
             shell = sender;
         }
 
-        private string _firstName;
-
-        public string FirstName
-        {
-            get { return _firstName; }
-            set
-            {
-                _firstName = value;
-                NotifyOfPropertyChange(FirstName);
-            }
-        }
+        public Person PersonToCreate { get; set; } = new Person { Address = new Address()};
 
         public bool IsValid
         {
             get
             {
-                if (string.IsNullOrEmpty(FirstName)) return false;
+                if (string.IsNullOrEmpty(PersonToCreate.FirstName)) return false;
                 return true;
             }
         }
-
-
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public DateTime DateOfBirth { get; set; } = DateTime.Now;
-
-        public string StreetName { get; set; }
-        public string StreetNumber { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
-        public int ZipCode { get; set; }
 
         public void Save(string firstName)
         {
             if (IsValid)
             {
-                shell.CreatePerson(new Person
-                {
-                    FirstName = FirstName,
-                    LastName = LastName,
-                    PhoneNumber = PhoneNumber,
-                    Email = Email,
-                    DateOfBirth = DateOfBirth,
-
-                    Address = new Address
-                    {
-                        StreetName = StreetName,
-                        StreetNumber = StreetNumber,
-                        City = City,
-                        State = State,
-                        Country = Country,
-                        ZipCode = ZipCode
-                    }
-                });
+                shell.CreatePerson(PersonToCreate);
             }     
         }
     }
