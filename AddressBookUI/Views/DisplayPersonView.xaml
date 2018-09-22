@@ -16,72 +16,87 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <ScrollViewer Grid.Column="2" Grid.RowSpan="3"  Margin="15 0 10 0"
                       VerticalScrollBarVisibility="Hidden">
-            <StackPanel>
-                <StackPanel.Resources>
-                    <Style x:Key="Text" TargetType="TextBlock">
-                        <Setter Property="Foreground" Value="White" />
-                        <Setter Property="Margin" Value="0 10 0 0" />
-                    </Style>
-                    <Style x:Key="PrimaryText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
-                        <Setter Property="Foreground" Value="White" />
-                        <Setter Property="FontSize" Value="34" />
-                    </Style>
-                    <Style x:Key="SecondaryText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
-                        <Setter Property="Foreground" Value="#BBDEFB" />
-                        <Setter Property="FontSize" Value="26" />
-                    </Style>
-                </StackPanel.Resources>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.RowSpan="2">
+                    <StackPanel.Resources>
+                        <Style x:Key="Text" TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="Margin" Value="0 10 0 0" />
+                        </Style>
+                        <Style x:Key="PrimaryText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="FontSize" Value="34" />
+                        </Style>
+                        <Style x:Key="SecondaryText" BasedOn="{StaticResource Text}" TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="#BBDEFB" />
+                            <Setter Property="FontSize" Value="26" />
+                        </Style>
+                    </StackPanel.Resources>
 
-                <!-- Profile picture and name-->
+                    <!-- Profile picture and name-->
 
-                <Ellipse Width="150" Height="150" Margin="0 20 0 0" 
+                    <Ellipse Width="150" Height="150" Margin="0 20 0 0" 
                      Stroke="White" StrokeThickness="0">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="/images/anselmo.png" Stretch="UniformToFill"/>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
-                    </Ellipse.Effect>
-                </Ellipse>
-                <TextBlock Text="{Binding SelectedPerson.FullName, Mode=OneWay}" FontSize="45" TextWrapping="Wrap" TextAlignment="Center"       
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/images/anselmo.png" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                        <Ellipse.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <TextBlock Text="{Binding SelectedPerson.FullName, Mode=OneWay}" FontSize="45" TextWrapping="Wrap" TextAlignment="Center"       
                            HorizontalAlignment="Center" Width="Auto" Margin="0 0 0 20"
                            Style="{StaticResource Text}" />
 
-                <!-- Information -->
+                    <!-- Information -->
 
-                <TextBlock Text="Phone Number" Style="{StaticResource PrimaryText}"/>
-                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="{Binding SelectedPerson.PhoneNumber}" Style="{StaticResource SecondaryText}"/>
+                    <TextBlock Text="Phone Number" Style="{StaticResource PrimaryText}"/>
+                    <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                    <TextBlock Text="{Binding SelectedPerson.PhoneNumber}" Style="{StaticResource SecondaryText}"/>
 
-                <TextBlock Text="Email" Style="{StaticResource PrimaryText}"/>
-                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="{Binding SelectedPerson.Email}" Style="{StaticResource SecondaryText}"/>
+                    <TextBlock Text="Email" Style="{StaticResource PrimaryText}"/>
+                    <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                    <TextBlock Text="{Binding SelectedPerson.Email}" Style="{StaticResource SecondaryText}"/>
 
-                <TextBlock Text="Date Of Birth" Style="{StaticResource PrimaryText}"/>
-                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="{Binding SelectedPerson.DateOfBirth}" Style="{StaticResource SecondaryText}"/>
+                    <TextBlock Text="Date Of Birth" Style="{StaticResource PrimaryText}"/>
+                    <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                    <TextBlock Text="{Binding SelectedPerson.DateOfBirth}" Style="{StaticResource SecondaryText}"/>
 
-                <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
-                <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
-                <TextBlock Text="{Binding SelectedPerson.Address.StreetNameAndNumber}" Style="{StaticResource SecondaryText}" Margin="0 10 0 0"/>
-                <TextBlock Text="{Binding SelectedPerson.Address.ZipCode}" Style="{StaticResource SecondaryText}" Margin="0"/>
-                <TextBlock Text="{Binding SelectedPerson.Address.City}" Style="{StaticResource SecondaryText}" Margin="0"/>
-                <TextBlock Text="{Binding SelectedPerson.Address.Country}" Style="{StaticResource SecondaryText}" Margin="0 0 0 20"/>
+                    <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
+                    <Rectangle Width="Auto" Stroke="#BBDEFB" VerticalAlignment="Stretch"/>
+                    <TextBlock Text="{Binding SelectedPerson.Address.StreetNameAndNumber}" Style="{StaticResource SecondaryText}" Margin="0 10 0 0"/>
+                    <TextBlock Text="{Binding SelectedPerson.Address.ZipCode}" Style="{StaticResource SecondaryText}" Margin="0"/>
+                    <TextBlock Text="{Binding SelectedPerson.Address.City}" Style="{StaticResource SecondaryText}" Margin="0"/>
+                    <TextBlock Text="{Binding SelectedPerson.Address.Country}" Style="{StaticResource SecondaryText}" Margin="0 0 0 20"/>
 
-            </StackPanel>
+                </StackPanel>
+
+                <Button x:Name="Edit" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right"
+                        Margin="10" Height="40" Background="Transparent" BorderThickness="0">
+                    <Image Source="/images/edit.png" />
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="5" Color="Gray" ShadowDepth="0"/>
+                    </Button.Effect>
+                </Button>
+
+                <Button x:Name="Delete" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left"
+                        Margin="10" Height="40" Background="Transparent" BorderThickness="0" >
+                    <Image Source="/images/delete.png" />
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="5" Color="Gray" ShadowDepth="0"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
         </ScrollViewer>
-
-        <Button Grid.Column="2" Grid.Row="0"
-            Margin="10" Height="40" Background="Transparent" BorderThickness="0"
-            HorizontalAlignment="Right">
-            <Image Source="/images/edit.png" />
-
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="5" Color="Gray" ShadowDepth="0"/>
-            </Button.Effect>
-        </Button>        
     </Grid>
 </UserControl>

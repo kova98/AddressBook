@@ -55,8 +55,24 @@
                 </Button>
 
                 <!-- Input Fields -->
-                
-                <TextBlock Text="First Name" Style="{StaticResource PrimaryText}"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="First Name" Style="{StaticResource PrimaryText}"/>
+                    <TextBlock Margin="10 0" FontSize="34"
+                               Text="*" Foreground="Yellow" VerticalAlignment="Bottom">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsValid}" Value="true">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+
                 <TextBox x:Name="FirstName" />
 
                 <TextBlock Text="Last Name" Style="{StaticResource PrimaryText}"/>
@@ -99,7 +115,7 @@
         <Button x:Name="Save"
                 Margin="10" Height="40" Background="Transparent" BorderThickness="0"
                 HorizontalAlignment="Right">
-            <Image Source="/images/save2.png" />
+            <Image Source="/images/save.png" />
 
             <Button.Effect>
                 <DropShadowEffect BlurRadius="5" Color="Gray" ShadowDepth="0"/>

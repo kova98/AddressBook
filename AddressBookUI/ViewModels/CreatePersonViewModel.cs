@@ -17,7 +17,28 @@ namespace AddressBookUI.ViewModels
             shell = sender;
         }
 
-        public string FirstName { get; set; }
+        private string _firstName;
+
+        public string FirstName
+        {
+            get { return _firstName; }
+            set
+            {
+                _firstName = value;
+                NotifyOfPropertyChange(FirstName);
+            }
+        }
+
+        public bool IsValid
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(FirstName)) return false;
+                return true;
+            }
+        }
+
+
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
@@ -30,26 +51,29 @@ namespace AddressBookUI.ViewModels
         public string Country { get; set; }
         public int ZipCode { get; set; }
 
-        public void Save()
+        public void Save(string firstName)
         {
-            shell.CreatePerson(new Person
+            if (IsValid)
             {
-                FirstName = FirstName,
-                LastName = LastName,
-                PhoneNumber = PhoneNumber,
-                Email = Email,
-                DateOfBirth = DateOfBirth,
-
-                Address = new Address
+                shell.CreatePerson(new Person
                 {
-                    StreetName = StreetName,
-                    StreetNumber = StreetNumber,
-                    City = City,
-                    State = State,
-                    Country = Country,
-                    ZipCode = ZipCode
-                }
-            });
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    PhoneNumber = PhoneNumber,
+                    Email = Email,
+                    DateOfBirth = DateOfBirth,
+
+                    Address = new Address
+                    {
+                        StreetName = StreetName,
+                        StreetNumber = StreetNumber,
+                        City = City,
+                        State = State,
+                        Country = Country,
+                        ZipCode = ZipCode
+                    }
+                });
+            }     
         }
     }
 }

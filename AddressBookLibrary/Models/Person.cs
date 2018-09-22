@@ -65,7 +65,17 @@ namespace AddressBookLibrary.Models
         /// </summary>
         public char FirstChar
         {
-            get { return FirstName.ToUpper()[0]; }
+            get
+            {
+                if (String.IsNullOrEmpty(FirstName)) 
+                {
+                    return ' ';
+                }
+                else
+                {
+                    return FirstName.ToUpper()[0];
+                }
+            }
         }
     }
 }

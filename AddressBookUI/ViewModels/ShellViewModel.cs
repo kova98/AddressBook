@@ -14,11 +14,6 @@ namespace AddressBookUI.ViewModels
         private Person _selectedPerson;
         private List<Person> _people;
 
-        public ShellViewModel()
-        {
-            
-        }
-
         public List<Person> People
         {
             get { return Connector.People.OrderBy(x => x.FirstName).ToList(); }
@@ -31,7 +26,16 @@ namespace AddressBookUI.ViewModels
 
         public Person SelectedPerson
         {
-            get { return _selectedPerson; }
+            get
+            {
+                Person person = _selectedPerson;
+                if (person != null)
+                {
+                    person.DateOfBirth = person.DateOfBirth.Date;
+                }
+
+                return person;
+            }
             set
             {
                 _selectedPerson = value;
@@ -42,7 +46,7 @@ namespace AddressBookUI.ViewModels
 
         public void ShowDisplayPerson()
         {
-            ActivateItem(new DisplayPersonViewModel(SelectedPerson));
+            ActivateItem(new DisplayPersonViewModel(SelectedPerson, this));
         }
 
         public void ShowCreatePerson()
@@ -54,6 +58,14 @@ namespace AddressBookUI.ViewModels
         {
             Connector.CreatePerson(person);
             NotifyOfPropertyChange(() => People);
+            SelectedPerson = person;
+        }
+
+        public void DeleteSelectedPerson()
+        {
+            Connector.DeletePerson(SelectedPerson);
+            NotifyOfPropertyChange(() => People);
+            SelectedPerson = People.FirstOrDefault();
         }
     }
 }

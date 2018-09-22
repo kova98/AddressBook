@@ -10,5 +10,6 @@ namespace AddressBookUI
     public interface IShell
     {
         void CreatePerson(Person person);
+        void DeleteSelectedPerson();
     }
 }
