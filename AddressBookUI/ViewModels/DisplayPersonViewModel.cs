@@ -10,7 +10,7 @@ namespace AddressBookUI.ViewModels
 {
     public class DisplayPersonViewModel : Screen
     {
-        private IShell shell;
+        private readonly IShell shell;
 
         public Person SelectedPerson { get; set; }
 
@@ -27,7 +27,7 @@ namespace AddressBookUI.ViewModels
 
         public void Edit()
         {
-            
+            shell.ShowEditPerson();
         }
     }
 }

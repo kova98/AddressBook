@@ -11,5 +11,7 @@ namespace AddressBookUI
     {
         void CreatePerson(Person person);
         void DeleteSelectedPerson();
+        void ShowEditPerson();
+        void EditPerson(Person person);
     }
 }

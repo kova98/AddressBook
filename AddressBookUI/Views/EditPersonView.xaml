@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AddressBookUI.Views.CreatePersonView"
+﻿<UserControl x:Class="AddressBookUI.Views.EditPersonView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -63,45 +63,45 @@
                     </TextBlock>
                 </StackPanel>
 
-                <TextBox x:Name="FirstName" />
+                <TextBox Text="{Binding SelectedPerson.FirstName, Mode=TwoWay}" />
 
                 <TextBlock Text="Last Name" Style="{StaticResource PrimaryText}"/>
-                <TextBox x:Name="LastName" />
+                <TextBox Text="{Binding SelectedPerson.LastName, Mode=TwoWay}" />
 
                 <TextBlock Text="Phone Number" Style="{StaticResource PrimaryText}"/>
-                <TextBox x:Name="PhoneNumber" />
-                
+                <TextBox Text="{Binding SelectedPerson.PhoneNumber, Mode=TwoWay}" />
+
                 <TextBlock Text="Email" Style="{StaticResource PrimaryText}"/>
-                <TextBox x:Name="Email" />
+                <TextBox Text="{Binding SelectedPerson.Email, Mode=TwoWay}" />
 
                 <TextBlock Text="Date Of Birth" Style="{StaticResource PrimaryText}"/>
-                <DatePicker x:Name="DateOfBirth" Background="White"/>
+                <TextBox Text="{Binding SelectedPerson.DateOfBirth, Mode=TwoWay}" />
 
                 <TextBlock Text="Address" Style="{StaticResource PrimaryText}"/>
                 <StackPanel Margin="10 0 0 0">
                     <TextBlock Text="Street Name" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="StreetName"/>
-                    
+                    <TextBox Text="{Binding SelectedPerson.Address.StreetName, Mode=TwoWay}" />
+
                     <TextBlock Text="Street Number" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="StreetNumber"/>
+                    <TextBox Text="{Binding SelectedPerson.Address.StreetNumber, Mode=TwoWay}" />
 
                     <TextBlock Text="City" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="City"/>
+                    <TextBox Text="{Binding SelectedPerson.Address.City, Mode=TwoWay}" />
 
                     <TextBlock Text="State" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="State"/>
+                    <TextBox Text="{Binding SelectedPerson.Address.State, Mode=TwoWay}" />
 
                     <TextBlock Text="Country" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="Country"/>
+                    <TextBox Text="{Binding SelectedPerson.Address.Country, Mode=TwoWay}" />
 
                     <TextBlock Text="Zip Code" Style="{StaticResource SecondaryText}"/>
-                    <TextBox x:Name="ZipCode" Margin="0 0 0 20"/>
+                    <TextBox Text="{Binding SelectedPerson.Address.ZipCode, Mode=TwoWay}" Margin="0 0 0 20" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
 
         <!-- Save Button -->
-        
+
         <Button x:Name="Save"
                 Margin="10" Height="40" Background="Transparent" BorderThickness="0"
                 HorizontalAlignment="Right">

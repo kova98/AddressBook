@@ -77,6 +77,10 @@ namespace AddressBookLibrary.DataAccess
                 {
                     personToEdit.FirstName = person.FirstName;
                     personToEdit.LastName = person.LastName;
+                    personToEdit.PhoneNumber = person.PhoneNumber;
+                    personToEdit.Email = person.Email;
+                    personToEdit.DateOfBirth = person.DateOfBirth;
+                    personToEdit.ProfilePhoto = person.ProfilePhoto;
 
                     // Perhaps change this to use a name.
                     personToEdit.Address = db.Addresses.FirstOrDefault(x => x.ID == person.Address.ID);
