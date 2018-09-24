@@ -41,11 +41,14 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
-                                <Ellipse Width="150" Height="150"
-                                         Fill="White" >
-                                </Ellipse>
+                                <Ellipse Width="150" Height="150" Fill="White"/>
                                 <Image Height="100" Width="100"
                                        Source="/images/upload.png" />
+                                <Ellipse Width="150" Height="150">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding ProfilePhoto}" Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
@@ -53,6 +56,9 @@
                         <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
                     </Button.Effect>
                 </Button>
+
+                <TextBlock Text="{Binding PhotoName}" HorizontalAlignment="Center" TextAlignment="Center"
+                           Style="{StaticResource SecondaryText}" TextWrapping="Wrap"/>
 
                 <!-- Input Fields -->
 

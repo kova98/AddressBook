@@ -69,11 +69,18 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="50" Width="50" Margin="0 5 10 5">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="/images/anselmo.png"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
+                        <Grid>
+                            <Ellipse Height="50" Width="50" Margin="0 5 10 5">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/images/person.png" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Ellipse Height="50" Width="50" Margin="0 5 10 5">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding ProfilePhoto}" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
                         <TextBlock Text="{Binding FullName}"
                                    VerticalAlignment="Center"
                                    Foreground="#212121"/>

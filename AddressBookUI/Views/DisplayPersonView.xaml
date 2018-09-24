@@ -43,15 +43,21 @@
 
                     <!-- Profile picture and name-->
 
-                    <Ellipse Width="150" Height="150" Margin="0 20 0 0" 
-                     Stroke="White" StrokeThickness="0">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="/images/anselmo.png" Stretch="UniformToFill"/>
-                        </Ellipse.Fill>
-                        <Ellipse.Effect>
-                            <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
-                        </Ellipse.Effect>
-                    </Ellipse>
+                    <Grid>
+                        <Ellipse Width="150" Height="150" Margin="0 20 0 0" >
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/images/person.png" Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="150" Height="150" Margin="0 20 0 0" >
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding SelectedPerson.ProfilePhoto}" Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                            <Ellipse.Effect>
+                                <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                    </Grid>
                     <TextBlock Text="{Binding SelectedPerson.FullName, Mode=OneWay}" FontSize="45" TextWrapping="Wrap" TextAlignment="Center"       
                            HorizontalAlignment="Center" Width="Auto" Margin="0 0 0 20"
                            Style="{StaticResource Text}" />
