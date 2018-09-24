@@ -5,6 +5,7 @@ A simple Address Book app made using WPF MVVM and Entity Framework
 * Add / Remove people
 * Edit existing people
 * Enter information, add a photo
+* Sort alphabetically
 
 
 ## Preview
