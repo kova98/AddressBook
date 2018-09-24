@@ -31,7 +31,10 @@ namespace AddressBookUI.ViewModels
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             DirectoryPath = $"{appData}\\{DirectoryName}";
 
-            ProfilePhoto = new BitmapImage(new Uri(SelectedPerson.ProfilePhoto));
+            if (SelectedPerson.ProfilePhoto != null)
+            {
+                ProfilePhoto = new BitmapImage(new Uri(SelectedPerson.ProfilePhoto));
+            }
         }
 
         public Person SelectedPerson
