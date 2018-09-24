@@ -12,7 +12,7 @@ A simple Address Book app made using WPF MVVM and Entity Framework
 ![Main Screen](https://i.imgur.com/Csllzh7.png)
 
 ### Add New Person
-![Add New Person](https://i.imgur.com/3wlJ49Vg.png)
+![Add New Person](https://i.imgur.com/3wlJ49V.png)
 
 ### Edit Person
 ![Edit Person](https://i.imgur.com/0I0C0pR.png)
